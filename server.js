@@ -1,9 +1,9 @@
 const express = require('express');
-const fetch = require('node-fetch');
 const cors = require('cors');
+const fetch = require('node-fetch');
 
 const app = express();
-app.use(cors());
+app.use(cors()); // ✅ Enables CORS for all origins
 app.use(express.json({ limit: '10mb' }));
 
 const PAT = '20dd574993e142a9a270a70e5ebd6450';
