@@ -62,10 +62,7 @@ app.post('/analyze', async (req, res) => {
     const foodData = await foodRes.json();
     console.log("🍕 Food model returned:", foodData);
 
-    res.json({
-      isHuman: false,
-      clarifaiFoodData: foodData
-    });
+    res.json(foodData);
 
   } catch (error) {
     console.error('🔥 Clarifai proxy error:', error);
