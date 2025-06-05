@@ -80,14 +80,9 @@ app.get('/health', (req, res) => {
 });
 
 app.get('/health', async (req, res) => {
-  console.log('🟢 GET /health triggered at', new Date().toISOString());
-  await new Promise(resolve => setTimeout(resolve, 500)); // 500ms delay
+  console.log('🟢 /health check at', new Date().toISOString(), 'from IP:', req.ip);
+  await new Promise(resolve => setTimeout(resolve, 500)); // Add 500ms delay
   res.status(200).send('OK');
 });
 
-app.get('/ping', async (req, res) => {
-  console.log('📡 /ping received at', new Date().toISOString(), 'from IP:', req.ip);
-  await new Promise(resolve => setTimeout(resolve, 500));
-  res.status(200).send('pong');
-});
 
