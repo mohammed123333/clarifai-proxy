@@ -75,14 +75,12 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-app.get('/health', (req, res) => {
-  res.status(200).send('OK');
-});
-
-app.get('/health', async (req, res) => {
-  console.log('🟢 /health check at', new Date().toISOString(), 'from IP:', req.ip);
+app.get('/ping', async (req, res) => {
+  console.log('📡 /ping received at', new Date().toISOString(), 'from IP:', req.ip);
   await new Promise(resolve => setTimeout(resolve, 500)); // Add 500ms delay
   res.status(200).send('OK');
 });
+
+
 
 
