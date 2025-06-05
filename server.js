@@ -79,11 +79,15 @@ app.get('/health', (req, res) => {
   res.status(200).send('OK');
 });
 
-app.get('/', (req, res) => {
-  console.log('Received ping at', new Date().toISOString());
-  res.send('OK');
+app.get('/health', async (req, res) => {
+  console.log('🟢 GET /health triggered at', new Date().toISOString());
+  await new Promise(resolve => setTimeout(resolve, 500)); // 500ms delay
+  res.status(200).send('OK');
 });
-app.head('/health', (req, res) => {
-  console.log("HEAD /health ping at", new Date().toISOString());
-  res.sendStatus(200);
+
+app.get('/ping', async (req, res) => {
+  console.log('📡 /ping received at', new Date().toISOString(), 'from IP:', req.ip);
+  await new Promise(resolve => setTimeout(resolve, 500));
+  res.status(200).send('pong');
 });
+
