@@ -83,4 +83,7 @@ app.get('/', (req, res) => {
   console.log('Received ping at', new Date().toISOString());
   res.send('OK');
 });
-
+app.head('/health', (req, res) => {
+  console.log("HEAD /health ping at", new Date().toISOString());
+  res.sendStatus(200);
+});
